@@ -1,3 +1,8 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
 
-Console.WriteLine("Hello, World!");
+var port = Environment.GetEnvironmentVariable("PORT") ?? "10000";
+
+app.MapGet("/", () => "Hello, World! Aplicación .NET 8 funcionando en Render.");
+
+app.Run($"http://0.0.0.0:{port}");
